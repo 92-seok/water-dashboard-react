@@ -1,6 +1,7 @@
 import { Droplets } from 'lucide-react'
 
 interface BluePanelProps {
+  className?: string
   title: string
   badge: string
   waterLevel: number
@@ -13,8 +14,8 @@ const MAX_CAPACITY = 200
 const WARNING_THRESHOLD = 100
 
 const numberFormatter = new Intl.NumberFormat('ko-KR', {
-  mininumFractionDigits: 2,
-  maxinumFractionDigits: 2,
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
 })
 
 export default function BluePanel({
@@ -64,13 +65,13 @@ export default function BluePanel({
             <div className="flex items-baseline justify-between gap-25 pl-2">
               <p className="text-xl font-bold tracking-[0.04em] text-white">현재 수위</p>
               <p className="text-2xl font-bold leading-tight text-white">
-                {waterLevel.toFixed(2)} m
+                {numberFormatter.format(waterLevel)} m
               </p>
             </div>
             <div className="flex items-baseline justify-between gap-13 pl-2">
               <p className="text-xl font-bold tracking-[0.04em] text-white">임계치</p>
               <p className="text-2xl font-bold leading-tight text-white">
-                {threshold.toFixed(2)} m
+                {numberFormatter.format(threshold)} m
               </p>
             </div>
           </div>
